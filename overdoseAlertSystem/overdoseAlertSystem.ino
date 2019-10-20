@@ -4,7 +4,7 @@ int redLed = 9;
 
 void setup()
 {
-  // Start with gree light on
+  // Start with green light on
   pinMode(greenLed, OUTPUT);
   digitalWrite(greenLed, HIGH);
   pinMode(yellowLed, OUTPUT);
@@ -19,6 +19,7 @@ void loop()
   lightSensor = analogRead(A0);
   doorSensor = analogRead(A2);
   delay(100);
+  // Sensor readings
   Serial.print("Light ");
   Serial.println(lightSensor);
   Serial.print("Door ");
@@ -39,10 +40,11 @@ void loop()
 
   // If the light turns off and the door is locked
   if (lightSensor > 100 && digitalRead(redLed) == LOW && door > 300) {
-    // warn yello
+    // warn yellow
     digitalWrite(greenLed, LOW);
     digitalWrite(yellowLed, HIGH);
     delay(5000);
+    
     int door2 = analogRead(doorSensor);
     delay(10);
     door2 += analogRead(doorSensor);
